@@ -1,6 +1,12 @@
-playVid();
-function playVid() {
-    var vid = document.getElementById("myVideo"); 
-    console.log(typeof vid);
+var vid = document.getElementById("backgroundVideo"); 
+vid.play();
+
+function playVid(vid) {
   vid.play(); 
 } 
+function changeSrc(videoFile,videoContainer){
+  var vidSrc = document.getElementById("backgroundVideoSrc");
+  videoContainer.pause();
+  vidSrc.setAttribute("src",videoFile);
+  videoContainer.play();
+}
