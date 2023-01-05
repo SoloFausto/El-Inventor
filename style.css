@@ -1,7 +1,31 @@
-/* #backgroundVideo {
+#backgroundVideo {
     position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-  } */
+    z-index: 1;
+  } 
+html{
+  background-color: #231942;
+}
+#gate {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 100px;
+  width: 83px;
+  height: 46px;
+  z-index: 2;
+}
+
+#ball {
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+}
+.inventory{
+  z-index: 2;
+}
+@import "compass/css3";
