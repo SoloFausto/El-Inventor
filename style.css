@@ -7,25 +7,40 @@
     z-index: 1;
   } 
 html{
-  background-color: #231942;
+  background-color: #ffffff;
 }
-#gate {
+#freeSlot {
   position: relative;
   cursor: pointer;
   margin-bottom: 100px;
   width: 83px;
   height: 46px;
   z-index: 2;
+  background-color: aqua;
 }
-
-#ball {
+#slot {
   position: relative;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  margin-bottom: 100px;
+  width: 83px;
+  height: 46px;
+  z-index: 2;
+  background-color: aqua;
+}
+.draggableItem {
+  position: absolute;
+  z-index: 9;
+  cursor: move;
+}
+.draggableItem2 {
+  position: absolute;
+  z-index: 9;
+  cursor: move;
+}
+#inventory{
   z-index: 2;
 }
-.inventory{
+#gate{
   z-index: 2;
 }
 @import "compass/css3";

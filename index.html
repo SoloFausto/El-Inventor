@@ -7,34 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="jquery-ui.css">
+
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <video  id="backgroundVideo" muted>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- <video  id="backgroundVideo" muted>
         <source id="backgroundVideoSrc" src="video1.mp4" type="video/mp4">
-    </video>
+    </video> -->
+<!-- <div class ="ui-widget-content" id="draggableItem"> 
+    <img src="https://en.js.cx/clipart/soccer-gate.svg ">
+</div>
+    
+
+    <div class = "ui-widget-content" id="draggableItem2">
+        <img src="https://en.js.cx/clipart/ball.svg">
+    </div> -->
+    <script>
+
+        </script>
 
 
+        <img src="https://en.js.cx/clipart/ball.svg" id="draggable" class="ui-widget-content" >
 
-    <img src="https://en.js.cx/clipart/ball.svg" id="ball">
-    <script src="scripts.js"></script>
+       
+
+        <img src="https://en.js.cx/clipart/soccer-gate.svg " id="draggable2" class="ui-widget-content" >
+
+       
+
+
     <table id="inventory" class="droppable">
         <tr>
-            <td class="droppable"> 
-                <img src="https://en.js.cx/clipart/soccer-gate.svg" id="gate" >
+            <td id="freeSlot"> 
+                
             </td>
-            <td class="droppable">
-                <img src="https://en.js.cx/clipart/soccer-gate.svg" id="gate" >
+            <td id="freeSlot">
+
             </td>
-            <td class="droppable">
-                <img src="https://en.js.cx/clipart/soccer-gate.svg" id="gate">
+            <td id="freeSlot">
+
             </td>
-            <td class="droppable">
-                <img src="https://en.js.cx/clipart/soccer-gate.svg" id="gate">
+            <td id="freeSlot">
+
             </td>
         </tr>
     </table>
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 var vid = document.getElementById("backgroundVideo"); 
-
-vid.play();
-
+var inventory = document.getElementById("inventory");
+// vid.play();
 
 function changeSrc(videoFile,videoContainerId,videoSourceId){
   console.log(typeof videoContainer);
@@ -17,76 +16,46 @@ function changeSrc(videoFile,videoContainerId,videoSourceId){
   videoContainerChanged.play();
   return null;
 }
+/// Mouse section start
+$( function() {
+  $( "#draggable" ).draggable({
+    revert: true
+  });
+  $( "#draggable2" ).draggable({
+    drag: function( event, ui) {
+
+      if(elementsOverlap(inventory,ui.helper[0])){
+       addToInventory(ui.helper[0],inventory);
+        
+      }
+    },
+    revert: true
+  });
+} );
 
 
 
+/// Mouse section stop
+function addToInventory(item,inventory){
+  console.log(item);
+  var currentSlot = document.getElementById("freeSlot");
+  item.style = '';
+  item.classList  = 'inventoryItem';
+  item.id = '';
+  currentSlot.appendChild(item);
+  currentSlot.id = "slot";
+  return true;
 
-let currentDroppable = null;
-var ball = document.getElementById("ball");
- var ballInitialX = ball.getBoundingClientRect().left;
- var ballInitialY = ball.getBoundingClientRect().top;
-     ball.onmousedown = function(event) {
+}
 
-       let shiftX = event.clientX - ball.getBoundingClientRect().left;
-       let shiftY = event.clientY - ball.getBoundingClientRect().top;
+function elementsOverlap(el1, el2) {
+  const domRect1 = el1.getBoundingClientRect();
+  const domRect2 = el2.getBoundingClientRect();
 
-       ball.style.position = 'absolute';
-       ball.style.zIndex = 1000;
-       document.body.append(ball);
-
-       moveAt(event.pageX, event.pageY);
-
-       function moveAt(pageX, pageY) {
-         ball.style.left = pageX - shiftX + 'px';
-         ball.style.top = pageY - shiftY + 'px';
-       }
-
-       function onMouseMove(event) {
-         moveAt(event.pageX, event.pageY);
-
-         ball.hidden = true;
-         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-         ball.hidden = false;
-
-         if (!elemBelow) return;
-
-         let droppableBelow = elemBelow.closest('.droppable');
-         if (currentDroppable != droppableBelow) {
-           if (currentDroppable) { // null when we were not over a droppable before this event
-             leaveDroppable(currentDroppable);
-           }
-           currentDroppable = droppableBelow;
-           if (currentDroppable) { // null if we're not coming over a droppable now
-             // (maybe just left the droppable)
-             enterDroppable(currentDroppable);
-           }
-         }
-       }
-
-       document.addEventListener('mousemove', onMouseMove);
-
-       ball.onmouseup = function() {
-         document.removeEventListener('mousemove', onMouseMove);
-         if (currentDroppable){ // If we leave the object inside the inventory
-          $(ball).remove();
-          leaveDroppable(currentDroppable);
-         }
-         else {
-          moveAt(ballInitialX,ballInitialY);
-         }
-         ball.onmouseup = null;
-       };
-
-     };
-
-     function enterDroppable(elem) {
-       elem.style.background = 'pink';
-     }
-
-     function leaveDroppable(elem) {
-       elem.style.background = '';
-     }
-
-     ball.ondragstart = function() {
-       return false;
-     };
+  return !(
+    domRect1.top > domRect2.bottom ||
+    domRect1.right < domRect2.left ||
+    domRect1.bottom < domRect2.top ||
+    domRect1.left > domRect2.right
+  );
+}
