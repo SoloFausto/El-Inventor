@@ -15,7 +15,6 @@ html{
   margin-bottom: 100px;
   width: 83px;
   height: 46px;
-  z-index: 2;
   background-color: aqua;
 }
 #slot {
@@ -24,23 +23,15 @@ html{
   margin-bottom: 100px;
   width: 83px;
   height: 46px;
-  z-index: 2;
   background-color: aqua;
 }
-.draggableItem {
-  position: absolute;
+#draggable0{
   z-index: 9;
-  cursor: move;
-}
-.draggableItem2 {
   position: absolute;
-  z-index: 9;
-  cursor: move;
 }
+
 #inventory{
-  z-index: 2;
+  position: fixed;
+  top: 90%;
+  right: 45%;
 }
-#gate{
-  z-index: 2;
-}
-@import "compass/css3";

@@ -1,5 +1,8 @@
 var vid = document.getElementById("backgroundVideo"); 
 var inventory = document.getElementById("inventory");
+var draggableItem = document.getElementById("draggable0");
+var freeSlot = document.getElementsByClassName("freeslot");
+
 // vid.play();
 
 function changeSrc(videoFile,videoContainerId,videoSourceId){
@@ -17,34 +20,41 @@ function changeSrc(videoFile,videoContainerId,videoSourceId){
   return null;
 }
 /// Mouse section start
-$( function() {
-  $( "#draggable" ).draggable({
-    revert: true
-  });
-  $( "#draggable2" ).draggable({
-    drag: function( event, ui) {
 
-      if(elementsOverlap(inventory,ui.helper[0])){
-       addToInventory(ui.helper[0],inventory);
-        
-      }
+const position = { x: 0, y: 0 }
+
+interact(draggableItem).draggable({
+  listeners: {
+    move (event) {
+      position.x += event.dx
+      position.y += event.dy
+      event.target.style.transform =
+        `translate(${position.x}px, ${position.y}px)`
+        if(elementsOverlap(inventory,event.target)){
+          console.log("okok");
+        }
     },
-    revert: true
-  });
-} );
+    end (event){
+      if(elementsOverlap(inventory,event.target)){
+        addToInventory(event.target,inventory);
+      };
+    },
+  }
+})
+
+
 
 
 
 /// Mouse section stop
 function addToInventory(item,inventory){
-  console.log(item);
   var currentSlot = document.getElementById("freeSlot");
-  item.style = '';
-  item.classList  = 'inventoryItem';
-  item.id = '';
-  currentSlot.appendChild(item);
+  var newItem = item.cloneNode(true);
+  item.parentNode.replaceChild(newItem,item);
+  newItem.style = '';
+  newItem.id = 'inventoryItem';
+  currentSlot.appendChild(newItem);
   currentSlot.id = "slot";
-  return true;
 
 }
 
